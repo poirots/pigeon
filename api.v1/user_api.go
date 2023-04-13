@@ -1,4 +1,4 @@
-package user
+package v1
 
 import (
 	"github.com/gin-gonic/gin"
@@ -7,17 +7,13 @@ import (
 	"net/http"
 )
 
-func InitApi(r *gin.Engine) {
-	group := r.Group("/user")
-	{
-		group.GET("/:uid", GetUserDetail)
-		group.GET("f/:username", FindUser)
-	}
-
+func GetUserList(c *gin.Context) {
+	uuid := c.Query("uuid")
+	c.JSON(http.StatusOK, response.Success(service.GetUserList(uuid)))
 }
 
 func GetUserDetail(c *gin.Context) {
-	uid := c.Param("uid")
+	uid := c.Param("uuid")
 	c.JSON(http.StatusOK, response.Success(service.GetUserDetail(uid)))
 }
 

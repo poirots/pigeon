@@ -21,6 +21,21 @@ func Register(user *model.User) error {
 	return nil
 }
 
+func GetUserList(uuid string) []model.User {
+	db := dao.GetDB()
+	var queryUser *model.User
+	db.First(&queryUser, "uuid = ?", uuid)
+	var nullId int32 = 0
+	if nullId == queryUser.Id {
+		return nil
+	}
+
+	var queryUsers []model.User
+	db.Raw("SELECT u.username, u.uuid, u.avatar FROM user_friends AS uf JOIN users AS u ON uf.friend_id = u.id WHERE uf.user_id = ?", queryUser.Id).Scan(&queryUsers)
+
+	return queryUsers
+}
+
 func GetUserDetail(uid string) model.User {
 	var u *model.User
 	db := dao.GetDB()
