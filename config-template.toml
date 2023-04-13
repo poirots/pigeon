@@ -1,0 +1,21 @@
+appName = "pigeon"
+
+[mysql]
+host = "127.0.0.1"
+name = "pigeon"
+password = "Root@123"
+port = 3306
+tablePrefix = ""
+user = "root"
+
+[log]
+level = "debug"
+path = "logs/pigeon.log"
+
+[staticPath]
+filePath = "web/static/file/"
+
+[msgChannelType]
+channelType = "gochannel"
+kafkaHosts = "kafka:9092"
+kafkaTopic = "pigeon-message"
