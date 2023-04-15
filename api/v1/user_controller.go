@@ -2,14 +2,14 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pigeon/common/response"
-	"github.com/pigeon/internal/service"
 	"net/http"
+	"pigeon/common/response"
+	"pigeon/internal/service"
 )
 
 func GetUserList(c *gin.Context) {
 	uuid := c.Query("uuid")
-	c.JSON(http.StatusOK, response.Success(service.GetUserList(uuid)))
+	c.JSON(http.StatusOK, response.Success(service.UserService.GetUserList(uuid)))
 }
 
 func GetUserDetail(c *gin.Context) {

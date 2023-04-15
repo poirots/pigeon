@@ -3,12 +3,17 @@ package service
 import (
 	"errors"
 	"github.com/google/uuid"
-	"github.com/pigeon/internal/dao"
-	"github.com/pigeon/internal/model"
+	"pigeon/internal/dao"
+	"pigeon/internal/model"
 	"time"
 )
 
-func Register(user *model.User) error {
+type userService struct {
+}
+
+var UserService = new(userService)
+
+func (u *userService) Register(user *model.User) error {
 	db := dao.GetDB()
 	var count int64
 	db.Model(&user).Where("username", user.Username).Count(&count)
@@ -21,7 +26,7 @@ func Register(user *model.User) error {
 	return nil
 }
 
-func GetUserList(uuid string) []model.User {
+func (u *userService) GetUserList(uuid string) []model.User {
 	db := dao.GetDB()
 	var queryUser *model.User
 	db.First(&queryUser, "uuid = ?", uuid)

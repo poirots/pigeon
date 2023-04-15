@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	v1 "github.com/pigeon/api.v1"
+	"pigeon/api/v1"
 )
 
 func InitUserApi(r *gin.Engine) {
@@ -11,9 +11,10 @@ func InitUserApi(r *gin.Engine) {
 		//group.GET("/:uid", v1.GetUserDetail)
 		//group.GET("f/:username", v1.FindUser)
 
-		group.GET("/user", v1.GetUserList)
 		group.GET("/user/:uuid", v1.GetUserDetail)
-		//group.GET("/user/name", v1.GetUserOrGroupByName)
+
+		group.GET("/user", v1.GetUserList)
+		// group.GET("/user/name", v1.GetUserOrGroupByName)
 		//group.POST("/user/register", v1.Register)
 		//group.POST("/user/login", v1.Login)
 		//group.PUT("/user", v1.ModifyUserInfo)

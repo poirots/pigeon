@@ -2,8 +2,8 @@ package userRouter
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pigeon/config"
 	"net/http"
+	"pigeon/config"
 )
 
 func UserAuthRouter(g *gin.RouterGroup) {

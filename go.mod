@@ -1,4 +1,4 @@
-module github.com/pigeon
+module pigeon
 
 go 1.19
 

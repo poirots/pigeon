@@ -41,9 +41,10 @@ var cfg TomlConfig
 
 func init() {
 	viper.AutomaticEnv()
-	viper.AddConfigPath(".")
-	viper.SetConfigName("config")
-	viper.SetConfigType("toml")
+	viper.SetConfigFile("./config.toml")
+	//viper.AddConfigPath(".")
+	//viper.SetConfigName("config")
+	//viper.SetConfigType("toml")
 	err := viper.ReadInConfig()
 	if err != nil {
 		panic(fmt.Errorf("fatal error config file: %s", err))

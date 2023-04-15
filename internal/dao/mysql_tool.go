@@ -2,9 +2,9 @@ package dao
 
 import (
 	"fmt"
-	"github.com/pigeon/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"pigeon/config"
 )
 
 var db *gorm.DB

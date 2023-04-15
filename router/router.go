@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/pigeon/router/api"
+	"pigeon/router/api"
 )
 
 // InitRouter 初始化路由
