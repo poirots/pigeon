@@ -3,10 +3,13 @@ package main
 import (
 	"flag"
 	"fmt"
+	log "pigeon/common"
+	"pigeon/config"
 	"pigeon/router"
 )
 
 func main() {
+	_ = log.InitLogger(config.GetConfig().Log.Path, config.GetConfig().Log.Level)
 
 	// 注册路由
 	r := router.InitRouter()

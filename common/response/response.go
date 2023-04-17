@@ -14,7 +14,7 @@ func Success(data interface{}) *Response {
 	}
 }
 
-func Error(errorMsg string) *Response {
+func Failed(errorMsg string) *Response {
 	return &Response{
 		Code:    -1,
 		Message: errorMsg,
