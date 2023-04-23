@@ -9,8 +9,8 @@ import (
 )
 
 func main() {
-	_ = log.InitLogger(config.GetConfig().Log.Path, config.GetConfig().Log.Level)
-
+	log.InitLogger(config.GetConfig().Log.Path, config.GetConfig().Log.Level)
+	log.SugarLogger.Debugf("start server %s", config.GetConfig().Log.Path)
 	// 注册路由
 	r := router.InitRouter()
 	r.StaticFile("/favicon.ico", "./favicon.ico")

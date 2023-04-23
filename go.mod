@@ -5,7 +5,10 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.9.0
 	github.com/google/uuid v1.3.0
+	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/spf13/viper v1.15.0
+	go.uber.org/zap v1.24.0
+	gopkg.in/natefinch/lumberjack.v2 v2.2.1
 	gorm.io/driver/mysql v1.5.0
 	gorm.io/gorm v1.25.0
 )
@@ -41,7 +44,6 @@ require (
 	github.com/ugorji/go/codec v1.2.9 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
-	go.uber.org/zap v1.24.0 // indirect
 	golang.org/x/arch v0.0.0-20210923205945-b76863e36670 // indirect
 	golang.org/x/crypto v0.5.0 // indirect
 	golang.org/x/net v0.7.0 // indirect
