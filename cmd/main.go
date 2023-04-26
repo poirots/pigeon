@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	log "pigeon/common"
+	"pigeon/common/log"
 	"pigeon/config"
 	"pigeon/router"
 )
