@@ -11,11 +11,12 @@ func InitUserApi(r *gin.Engine) {
 		//group.GET("/:uid", v1.GetUserDetail)
 		//group.GET("f/:username", v1.FindUser)
 
+		group.GET("/users", v1.ListAllUser)
 		group.GET("/user/:uuid", v1.GetUserDetail)
-
 		group.GET("/user", v1.GetUserList)
-		// group.GET("/user/name", v1.GetUserOrGroupByName)
 		group.POST("/user/register", v1.Register)
+
+		// group.GET("/user/name", v1.GetUserOrGroupByName)
 		//group.POST("/user/login", v1.Login)
 		//group.PUT("/user", v1.ModifyUserInfo)
 		//

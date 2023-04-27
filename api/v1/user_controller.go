@@ -3,6 +3,7 @@ package v1
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"pigeon/common/log"
 	"pigeon/common/response"
 	"pigeon/internal/model"
 	"pigeon/internal/service"
@@ -13,7 +14,8 @@ func Register(c *gin.Context) {
 	_ = c.ShouldBindJSON(&user)
 	err := service.UserService.Register(&user)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, response.Failed("error"))
+		log.SugarLogger.Error(err.Error())
+		c.JSON(http.StatusInternalServerError, response.Failed(err.Error()))
 		return
 	}
 	c.JSON(http.StatusOK, response.Success(nil))
@@ -22,6 +24,11 @@ func Register(c *gin.Context) {
 func GetUserList(c *gin.Context) {
 	uuid := c.Query("uuid")
 	c.JSON(http.StatusOK, response.Success(service.UserService.GetUserList(uuid)))
+}
+
+func ListAllUser(c *gin.Context) {
+	// user := service.UserService.ListAllUser()
+	c.JSON(http.StatusOK, response.Success(service.UserService.ListAllUser))
 }
 
 func GetUserDetail(c *gin.Context) {

@@ -41,6 +41,13 @@ func (u *userService) GetUserList(uuid string) []model.User {
 	return queryUsers
 }
 
+func (u *userService) ListAllUser() []model.User {
+	db := dao.GetDB()
+	var queryUsers []model.User
+	db.Raw("select id,uuid,username,nickname,avatar,email,create_at,update_at from users").Scan(&queryUsers)
+	return queryUsers
+}
+
 func GetUserDetail(uid string) model.User {
 	var u *model.User
 	db := dao.GetDB()
