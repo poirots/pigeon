@@ -28,7 +28,7 @@ func GetUserList(c *gin.Context) {
 
 func ListAllUser(c *gin.Context) {
 	// user := service.UserService.ListAllUser()
-	c.JSON(http.StatusOK, response.Success(service.UserService.ListAllUser))
+	c.JSON(http.StatusOK, response.Success(service.UserService.ListAllUser()))
 }
 
 func GetUserDetail(c *gin.Context) {
