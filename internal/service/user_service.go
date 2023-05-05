@@ -48,6 +48,13 @@ func (u *userService) ListAllUser() []model.User {
 	return queryUsers
 }
 
+func (u *userService) GetUserByUserName(queryUser *model.User) *model.User {
+	db := dao.GetDB()
+	var resultUser *model.User
+	db.First(&resultUser, "username = ?", queryUser.Username)
+	return resultUser
+}
+
 func GetUserDetail(uid string) model.User {
 	var u *model.User
 	db := dao.GetDB()
