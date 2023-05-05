@@ -33,6 +33,18 @@ func Login(c *gin.Context) {
 	}
 }
 
+func ModifyUserInfo(c *gin.Context) {
+	var paramUser model.User
+	c.ShouldBindJSON(&paramUser)
+	log.SugarLogger.Infof("update user: %s", paramUser.Username)
+	err := service.UserService.UpdateUser(&paramUser)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, response.Failed("error"))
+	} else {
+		c.JSON(http.StatusOK, response.Success("sucess"))
+	}
+}
+
 func GetUserList(c *gin.Context) {
 	uuid := c.Query("uuid")
 	c.JSON(http.StatusOK, response.Success(service.UserService.GetUserList(uuid)))

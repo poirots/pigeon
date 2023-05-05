@@ -55,6 +55,21 @@ func (u *userService) GetUserByUserName(queryUser *model.User) *model.User {
 	return resultUser
 }
 
+func (u userService) UpdateUser(reqUser *model.User) error {
+	db := dao.GetDB()
+	var queryUser model.User
+	db.First(&queryUser, "username=?", reqUser.Username)
+	var nullId int32
+	if nullId == queryUser.Id {
+		return errors.New("user not exist")
+	}
+	queryUser.Nickname = reqUser.Nickname
+	queryUser.Email = reqUser.Email
+	queryUser.Password = reqUser.Password
+	db.Save(queryUser)
+	return nil
+}
+
 func GetUserDetail(uid string) model.User {
 	var u *model.User
 	db := dao.GetDB()

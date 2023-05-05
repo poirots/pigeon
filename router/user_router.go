@@ -16,6 +16,7 @@ func InitUserApi(r *gin.Engine) {
 		group.GET("/user", v1.GetUserList)
 		group.POST("/user/register", v1.Register)
 		group.POST("/user/login", v1.Login)
+		group.PUT("/user", v1.ModifyUserInfo)
 
 		// group.GET("/user/name", v1.GetUserOrGroupByName)
 		//group.PUT("/user", v1.ModifyUserInfo)
