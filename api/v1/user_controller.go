@@ -45,6 +45,10 @@ func ModifyUserInfo(c *gin.Context) {
 	}
 }
 
+func AddFriend(c *gin.Context) {
+	c.JSON(http.StatusOK, response.Success("sucess"))
+}
+
 func GetUserList(c *gin.Context) {
 	uuid := c.Query("uuid")
 	c.JSON(http.StatusOK, response.Success(service.UserService.GetUserList(uuid)))

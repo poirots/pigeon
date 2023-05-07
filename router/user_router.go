@@ -21,7 +21,7 @@ func InitUserApi(r *gin.Engine) {
 		// group.GET("/user/name", v1.GetUserOrGroupByName)
 		//group.PUT("/user", v1.ModifyUserInfo)
 		//
-		//group.POST("/friend", v1.AddFriend)
+		group.POST("/friend", v1.AddFriend)
 		//
 		//group.GET("/message", v1.GetMessage)
 		//
