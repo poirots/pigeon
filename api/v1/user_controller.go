@@ -2,11 +2,14 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/google/uuid"
 	"net/http"
 	"pigeon/common/log"
 	"pigeon/common/response"
+	"pigeon/config"
 	"pigeon/internal/model"
 	"pigeon/internal/service"
+	"strings"
 )
 
 func Register(c *gin.Context) {
@@ -67,4 +70,28 @@ func GetUserDetail(c *gin.Context) {
 func FindUser(c *gin.Context) {
 	username := c.Param("username")
 	c.JSON(http.StatusOK, response.Success(service.FindUserByUserName(username)))
+}
+
+func SaveFile(c *gin.Context) {
+	newId := uuid.New().String()
+	userId := c.PostForm("uuid")
+	file, _ := c.FormFile("file")
+	filename := file.Filename
+	idx := strings.LastIndex(filename, ".")
+	extName := filename[idx:]
+	randomFileName := newId + extName
+
+	log.SugarLogger.Info("file=%s", filename)
+	log.SugarLogger.Info("userUuid=%s", userId)
+
+	err := c.SaveUploadedFile(file, config.GetConfig().StaticPath.FilePath+randomFileName)
+	if err != nil {
+		log.SugarLogger.Error("error", err)
+		return
+	}
+	err2 := service.UserService.UpdateUserAvatar(userId, randomFileName)
+	if err2 != nil {
+		log.SugarLogger.Error("error", err2)
+		return
+	}
 }

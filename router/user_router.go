@@ -26,7 +26,7 @@ func InitUserApi(r *gin.Engine) {
 		//group.GET("/message", v1.GetMessage)
 		//
 		//group.GET("/file/:fileName", v1.GetFile)
-		//group.POST("/file", v1.SaveFile)
+		group.POST("/file", v1.SaveFile)
 		//
 		//group.GET("/group/:uuid", v1.GetGroup)
 		//group.POST("/group/:uuid", v1.SaveGroup)

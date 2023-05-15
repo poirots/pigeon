@@ -83,3 +83,16 @@ func FindUserByUserName(name string) model.User {
 	db.Select("uuid", "username", "nickname", "avatar", "create_at").First(&u, "username = ?", name)
 	return *u
 }
+
+func (u userService) UpdateUserAvatar(userId string, avatar string) error {
+	var queryUser *model.User
+	db := dao.GetDB()
+	db.First(&queryUser, "uuid = ?", userId)
+
+	if 0 == queryUser.Id {
+		return errors.New("用户不存在")
+	}
+
+	db.Model(&queryUser).Update("avatar", avatar)
+	return nil
+}
