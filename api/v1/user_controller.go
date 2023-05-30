@@ -97,5 +97,9 @@ func SaveFile(c *gin.Context) {
 }
 
 func GetGroup(c *gin.Context) {
+	c.Param("uuid")
+}
+
+func SaveGroup(c *gin.Context) {
 	c.PostForm("uuid")
 }
